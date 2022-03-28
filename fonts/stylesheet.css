@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Benno';
+    src: url('BennoRegular.woff2') format('woff2'),
+        url('BennoRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,0 +1,15 @@
+{
+  "name": "browser",
+  "homepage": "https://github.com/ded/bowser",
+  "version": "2.11.0",
+  "_release": "2.11.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.11.0",
+    "commit": "108bdc9c02ae67fca447795c26062dfa64748d48"
+  },
+  "_source": "https://github.com/ded/bowser.git",
+  "_target": "^2.11.0",
+  "_originalSource": "browser",
+  "_direct": true
+}

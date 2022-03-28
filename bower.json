@@ -1,0 +1,17 @@
+{
+  "name": "paper-rip-paper-js",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "hskingr <harrykriches@protonmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
