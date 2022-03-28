@@ -1,6 +1,3 @@
-
-
-
 let drawArr = []
 let pagesCount = 0
 let pagesCountLength
@@ -10,8 +7,11 @@ let decreasing = 0
 let w, h
 let pGraphics
 
+function preload() {
+  myFont = loadFont('../fonts/B612Mono-Regular.ttf');
+}
+
 function setup() {
-  // canvas.parent('sketch-holder');
 
   w = window.innerWidth
   h = window.innerHeight
@@ -23,25 +23,20 @@ function setup() {
   strokeWeight(2)
   background(255, 0, 200);
   pagesCountLength = selectAll('.pages').length
-  // selectAll('canvas')[1].remove()
+  textWrap(WORD)
+  textSize(16);
+  textAlign(CENTER);
+  textFont(myFont);
+  text('hello! please erase me.', w / 2, h / 2);
 }
 
-// function windowResized() {
-//   resizeCanvas(window.innerWidth, window.innerHeight);
-// }
 
-function draw() {
-
-}
-
-function mousePressed() {
-
-}
+function draw() {}
 
 function mouseDragged(event) {
 
   strokeWeight(windowWidth / 5)
-  
+
   if (w > h) {
     erase(15, 8)
     ellipse(mouseX, mouseY, ((w * h) / 4000), ((w * h) / 4000))
@@ -49,7 +44,7 @@ function mouseDragged(event) {
     erase(10, 8)
     ellipse(mouseX, mouseY, ((w * h) / 1500), ((w * h) / 1500))
   }
-  
+
   noErase();
 
   //need to adjust
@@ -57,38 +52,8 @@ function mouseDragged(event) {
 
 }
 
-
-
-// const mouseReleased = async ((event) => {
-//   console.log(pGraphics.width)
-//   let node = document.body
-//   try {
-//     const canvas = await html2canvas(document.body)
-//     let newImg = loadImage(canvas.toDataURL(), img => {
-//       if (pagesCount === 0) {
-//         selectAll('.pages')[pagesCount].addClass('hide')
-//         selectAll('.pages')[pagesCount + 1].removeClass('hide')
-//         pagesCount += 1
-//       } else if (pagesCount > 0 && pagesCount < pagesCountLength - 1) {
-//         selectAll('.pages')[pagesCount].addClass('hide')
-//         selectAll('.pages')[pagesCount + 1].removeClass('hide')
-//         pagesCount += 1
-//       } else {
-//         pagesCount = 0
-//         selectAll('.pages')[pagesCount].removeClass('hide')
-//         selectAll('.pages')[pagesCountLength - 1].addClass('hide')
-//         pagesCount += 1
-//       }
-//       pGraphics.image(newImg, 0, 0)
-//       image(pGraphics, 0, 0)
-//     })
-//   } catch (e) {
-//     console.log(e)
-//   }
-
-// })
-
 const changeDiv = () => {
+  console.log(pagesCount)
   if (pagesCount === 0) {
     selectAll('.pages')[pagesCount].addClass('hide')
     selectAll('.pages')[pagesCount + 1].removeClass('hide')
@@ -110,13 +75,11 @@ const changeDiv = () => {
 const fetchScreenshot = async () => {
   try {
     const canvas = await html2canvas(document.body, {
-
       scale: 1
     })
     const canvasImg = await canvas.toDataURL()
     const newImg = loadImage(canvasImg, (res) => {
       changeDiv()
-      console.log('ho')
       image(res, 0, 0)
     })
 
@@ -125,66 +88,41 @@ const fetchScreenshot = async () => {
   }
 }
 
+function filtering(node) {
+  return node.id != 'data-html2canvas-ignore';
+}
+
+
 const fetchDomToImage = async () => {
   try {
-    const domImg = await domtoimage.toSvg(document.body)
+    options = {quality: 1, filter: filtering}
+    const domImg = await domtoimage.toPng(document.body, options)
     const newImg = loadImage(domImg, res => {
       changeDiv()
       image(res, 0, 0)
     })
   } catch (e) {
-
+    console.log(e)
   }
 }
 
-function mouseReleased(event) {
-  // html2canvas(document.body).then((canvas) => {
-  //   let newImg = loadImage(canvas.toDataURL(), img => {
-  //   // console.log(canvas)
-  //   document.body.appendChild(canvas);
-  //   canvas.classList.add("hide")
-  //   changeDiv()
-  //   image(newImg, 0, 0)
-  //   })
-  // })
-
-console.log('hi')
-if (whichBrowser().toString() === 'Safari' || whichBrowser() === 'Unknown') {
-  console.log('hu')
-  fetchScreenshot()
-} else {
-  console.log('not safari')
-  fetchDomToImage()
-
-}
 
 
 
-  // domtoimage.toSvg(node, {})
-  //   .then(dataUrl => {
-  // console.log(dataUrl)
-  // let img = new Image();
-  // img.src = dataUrl;
-  // document.body.appendChild(img);
-  // let newImg = loadImage(dataUrl, img => {
-  //   if (pagesCount === 0) {
-  //     selectAll('.pages')[pagesCount].addClass('hide')
-  //     selectAll('.pages')[pagesCount + 1].removeClass('hide')
-  //     pagesCount += 1
-  //   } else if (pagesCount > 0 && pagesCount < pagesCountLength - 1) {
-  //     selectAll('.pages')[pagesCount].addClass('hide')
-  //     selectAll('.pages')[pagesCount + 1].removeClass('hide')
-  //     pagesCount += 1
-  //   } else {
-  //     pagesCount = 0
-  //     selectAll('.pages')[pagesCount].removeClass('hide')
-  //     selectAll('.pages')[pagesCountLength - 1].addClass('hide')
-  //     pagesCount += 1
-  //   }
-  //   pGraphics.image(newImg, 0, 0)
-  //   image(pGraphics, 0, 0)
-  // })
-  // })
+async function mouseReleased (event) {
+  try {
+    if (whichBrowser().toString() === 'Safari' || whichBrowser() === 'Unknown') {
+      fetchScreenshot()
+    } else {
+      console.log('not safari')
+      fetchDomToImage()
+
+    }
+  } catch (error) {
+    console.log(error)
+  }
+
+
 }
 
 function generate(item) {

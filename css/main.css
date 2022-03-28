@@ -122,9 +122,9 @@ body {
 }
 
 img {
-  position: absolute;
-  z-index: 20;
-  top: 5em;
+  width: auto;
+  height: 100%;
+
 }
 
 main {
@@ -149,29 +149,22 @@ canvas.p5Canvas {
 
 p {
   font-family: 'Benno-7', 'B612Mono';
-  color: whitesmoke;
+  color: rgb(0, 0, 0);
   margin: 1em 1.5em 1em 1em;
-  font-size: 6vw;
+  font-size: 8vw;
   line-height: 1.5em;
 }
 
-p.ptest {
+p.bottom {
   position: absolute;
-  z-index: 500;
-}
-
-p#testing {
-  position: absolute;
-  top: 1em;
-  left: 1em;
-  z-index: 999;
+  top: 85%;
+  left: 75%;
 }
 
 div {
   display: block;
   overflow: hidden;
 }
-
 
 div.pages {
   left: 0px;
@@ -181,6 +174,10 @@ div.pages {
   background-color: white;
   height: 100%;
   width: 100%;
+}
+
+div.container {
+  margin: 20%, 20%, 20%, 20%
 }
 
 #page1 {
@@ -195,7 +192,7 @@ div.pages {
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #DC281E, #F00000);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  text-align: right;
 }
 
 #page3 {
@@ -210,6 +207,7 @@ div.pages {
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #800080, #ffc0cb);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-align: bottom;
 }
 
 #page5 {
@@ -219,13 +217,46 @@ div.pages {
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #E7E9BB, #403B4A);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  text-align: bottom;
 }
 
 .hide {
   visibility: hidden;
 }
 
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: auto;
+  width: 80%;
+  height: 80%;
+
+}
+
+div.constant {
+  top: 90%;
+  position: absolute;
+  z-index: 101;
+}
+
+p.constantLink {
+  margin: 0;
+  padding-left: 1em;
+  font-size: large;
+  height: 100%;
+  width: 100%;
+}
 
 /* ==========================================================================
    Helper classes
@@ -317,6 +348,25 @@ div.pages {
 
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
+  img {
+    height: 100%;
+    width: 100%;
+  }
+
+  p {
+    font-family: 'Benno-7', 'B612Mono';
+    color: rgb(0, 0, 0);
+    margin: 1em 1.5em 1em 1em;
+    font-size: 5vw;
+    line-height: 1.5em;
+  }
+
+  p.bottom {
+    position: absolute;
+    top: 80%;
+    left: 75%;
+  }
+
 }
 
 @media print,

@@ -4,12 +4,13 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
-  <script src="js/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
   <script src="js/checkBrowser.js"></script>
   <script src="js/html2canvas.js"></script>
   <script src="js/p5-sketch.js"></script>
-  <script src="bower_components\dom-to-image\src\dom-to-image.js" />
+  <script src="bower_components/dom-to-image-more/dist/dom-to-image-more.min.js" />
   <script src="bower_components/browser/src/bowser.js"></script>
+
 
   <meta charset="utf-8">
   <title></title>
@@ -35,31 +36,54 @@
 </head>
 
 <body id="sketch-holder">
+  <div data-html2canvas-ignore="true"class="constant unselectable">
+    <a href="https://github.com/hskingr/p5_layered_website"  data-html2canvas-ignore="true" class=""> <p data-html2canvas-ignore data-html2canvas-ignore="true" id="data-html2canvas-ignore" class="constantLink unselectable">link to repo</p></a>
+    </div>
 
+<div class="container unselectable">
   <div class="pages" id="page1">
-    <p>🧑🏻 Harry King-Riches</p>
-    <p>🎺 Graphic Designer</p>
-    <p>📷 Portfolio</p>
-    <p>📧 Email</p>
+    <p class="center">Hello! <br> Please try to erase me.</p>
+
   </div>
-  <div class="pages hide" id="page2">
-    <p>🧑🏻 Harry King-Riches </p>
-    <p> show info about me here.</p>
+  <div class="pages hide unselectable" id="page2">
+    <p>🧑🏻 I made this website as a demonstration for a script I wrote. </p>
   </div>
 
-  <div class="pages hide" id="page3">
-    <p>🎺 Graphic Designer</p>
+  <div class="pages hide unselectable" id="page3">
+    <p>🎺 Using p5.js and dom-to-image.js</p>
   </div>
 
-  <div class="pages hide" id="page4">
-    <p>📷 Portfolio </p>
-    <p> show link here</p>
+  <div class="pages hide unselectable" id="page4">
+    <p>After every erase event, the canvas is captured and placed below. </p>
+    <p>The parts left unerased are kept.</p>
   </div>
 
-  <div class="pages hide" id="page5">
-    <p>📧 Email</p>
-    <p> harry(at)hskr.xyz</p>
+  <div class="pages hide unselectable" id="page4">
+    <p>Please erase the bottom.</p>
+    <p class="bottom">👋</p>
   </div>
+
+  <div class="pages hide unselectable">
+    <p>Here are a few random images to erase...</p>
+    <p class="bottom">👋</p>
+  </div>
+
+  <div class="pages hide unselectable">
+   <img class="" src="media/rand1.jpg" >
+  </div>
+
+  <div class="pages hide unselectable">
+   <img  class="" src="media/rand2.jpg" >
+  </div>
+
+  <div class="pages hide unselectable">
+   <img  class="" src="media/rand3.jpg" >
+  </div>
+
+  </div>
+
+
+
 </body>
 
 </html>
