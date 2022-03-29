@@ -1,3 +1,6 @@
+To run:
+
+`docker-compose up`
 
 ![Indexhibit Backend](./docs/first_shot.png)
 

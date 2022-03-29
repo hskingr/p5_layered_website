@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  website:
+    container_name: layered-static-website
+    image: joseluisq/static-web-server:2
+    environment:
+      - SERVER_PORT=80
+      - SERVER_ROOT=/public
+      - SERVER_LOG_LEVEL=debug
+    ports:
+      - 80:80
+    volumes:
+      - .:/public
